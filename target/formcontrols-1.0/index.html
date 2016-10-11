@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="DemoApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="vendor/bootstrap.css">
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  <script src="vendor/angular.js" type="text/javascript"></script>
+  <script src="js/app.js"></script>
+  <title></title>
+</head>
+<body>
+<div class="container">
+  <div class="row" ng-controller="FeedbackController">
+    <div class="col-md-6" >
+      <form role="form" class="form-horizontal" style="width: 20em;">
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control"  ng-model="feedback.name" placeholder="Name">
+          <label for="location">Gender:</label>
+          <select name="sex" class="form-control" ng-model="feedback.gender" style="width: 30%;">
+            <option value=""></option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <label for="email">Email</label>
+          <input type="text" class="form-control" ng-model='feedback.email' id="email" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+          <p>Please check all the emotions that apply to you</p>
+          
+          <div class='checkbox-inline' ng-repeat='emotion in emotions'>
+             <input type='checkbox' ng-checked="feedback.selectedEmotions.indexOf(emotion) > -1" ng-click="toggleSelection(emotion)" ng-bind='feedback.selectedEmotions'>{{emotion}}
+          </div>
+              
+          
+        </div>
+
+        <div class="form-group">
+          <p>How satisfied were you with our service?</p>
+
+          <div ng-repeat='satisfaction in satisfactionValues'>
+              <input name="chosen" type='radio' ng-click="$parent.feedback.satisfactionValue = satisfaction" ng-model='$parent.feedback.satisfactionValue'>{{satisfaction}}
+          </div>
+          
+        </div>
+        <div class="form-group">
+          <label for="comments">Further comments:</label> <textarea ng-model="feedback.comments" name="comments" id="comments" cols="25"
+                                                                    rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="location">Location visited:</label>
+          <select ng-options="location for location in locations" ng-model='feedback.location' name="location" id="location" class="form-control" style="width:10em;">
+              <option value=''>Select option</option>
+          </select>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-md-6">
+        <table class='table'>
+            <tr class='thead'>
+                <th class='thead'>Name</th>
+                <th class='thead'>Gender</th>
+                <th class='thead'>Email</th>
+                <th class='thead'>Selected emotions</th>
+                <th class='thead'>Satisfaction</th>
+                <th class='thead'>Comments</th>
+                <th class='thead'>Location</th>
+            </tr>
+            <tr>
+                <td class='tdata' ng-bind='feedback.name'></td>
+                <td class='tdata' ng-bind='feedback.gender'></td>
+                <td class='tdata' ng-bind='feedback.email'></td>
+                <td class='tdata'>{{feedback.selectedEmotions}}</td>
+                <td class='tdata' ng-bind='feedback.satisfactionValue'></td>
+                <td class='tdata' ng-bind='feedback.comments'></td>
+                <td class='tdata' ng-bind='feedback.location'></td>
+            </tr>
+        </table>
+      <!-- <p>{{feedback.selectedEmotions}}</p> -->
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

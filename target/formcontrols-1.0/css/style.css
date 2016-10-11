@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-10-2016, 19:44:42
+    Author     : xboxm
+*/
+
+.table {
+    border: 1px solid black;
+    
+}
+
+.thead {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid black;
+    
+}
+
+.tdata {
+    padding: 5pt;
+    border: 1px solid black;
+    vertical-align: bottom;
+}
+
+tr:nth-child(even) {
+    background: lightblue;
+    font-weight: bold;
+}
+
